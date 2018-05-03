@@ -1,5 +1,7 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_customer,only: [:edit,:update,:show,:destroy]
+
 
   def index
     @q=Customer.includes(:post, :company).ransack(params[:q])
